@@ -19,7 +19,15 @@ steps:
     publishJUnitResults: false
     testResultsFiles: '**/TEST-*.xml'
     tasks: 'assembleDebug'
-    
+
+- task: AndroidSigning@3
+  inputs:
+    apkFiles: '**/*.apk'
+    apksignerKeystoreFile: 'testlatest.keystore'
+    apksignerKeystorePassword: 'test12345'
+    apksignerKeystoreAlias: 'test12345'
+    apksignerKeyPassword: 'test12345'
+
 - task: ArchiveFiles@2
   inputs:
     rootFolderOrFile: '$(Build.BinariesDirectory)/*.apk'
